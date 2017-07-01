@@ -74,10 +74,16 @@
             CGContextAddEllipseInRect(context, currentRect);
             CGContextDrawPath(context, kCGPathFillStroke);
             break;
-            
-            case kImageShape:
+            //нужны скобки. Дело в том, что компилятору трудно интерпретировать переменные, объявляемые в первой строке после оператора case. Поэтому фигурные скобки упрощают интерпретацию исходного кода компилятором. Переменную horizontalOffset можно было бы объявить и до оператора switch, но в предлагаемом здесь варианте весь связанный код сохраняется вместе.
+            case kImageShape:{
+                //расчитывается центр изображения
+            CGFloat horizontalOffset = _drawImage.size.width / 2;
+            CGFloat verticalOffset = _drawImage.size.height / 2;
+            CGPoint drawPoint = CGPointMake(_lastTouch.x - horizontalOffset,
+                                            _lastTouch.y - verticalOffset);
+                [_drawImage drawAtPoint:drawPoint];//нарисовать изображение
             break;
-            
+            }
         default:
         break;
     }
