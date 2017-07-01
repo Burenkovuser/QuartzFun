@@ -45,4 +45,24 @@
     [self setNeedsDisplay];
 }
 
+//рисуем
+- (void)drawRect:(CGRect)rect {
+    CGContextRef context = UIGraphicsGetCurrentContext();//ссылка на кнонтекст где рисовать
+    CGContextSetLineWidth(context, 2.0);//линия толщеной 2
+    CGContextSetStrokeColorWithColor(context, _currentColor.CGColor);//цвет
+    
+    switch (_shapeType) {
+            case kLineShape://линия
+            CGContextMoveToPoint(context, _firstTouch.x, _firstTouch.y);
+            CGContextAddLineToPoint(context, _lastTouch.x, _lastTouch.y);
+            CGContextStrokePath(context);
+            break;
+            case kRectShape: break;
+            case kEllipseShape: break;
+            case kImageShape: break;
+        default:
+        break;
+    }
+}
+
 @end

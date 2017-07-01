@@ -16,6 +16,6 @@
 @property (strong, nonatomic) UIColor *currentColor;//храним цвет
 @property (nonatomic) ShapeType shapeType;//форма требуемая пользователю
 @property (nonatomic, retain) UIImage *drawImage;//храним рисунок
-@property (nonatomic) BOOL useRandomColor;// для изображения
+@property (nonatomic) BOOL useRandomColor;
 
 @end
